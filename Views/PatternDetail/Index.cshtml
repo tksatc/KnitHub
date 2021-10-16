@@ -1,0 +1,83 @@
+﻿@model IEnumerable<KnitHub.Models.PatternDetail>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pattern)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.yarnWeightKey)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.yarnWeightValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.needleTypeKey)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.needleTypeValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.needleSizeKey)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.needleSizeValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.wearableSizeKey)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.wearableSizeValue)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pattern.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.yarnWeightKey)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.yarnWeightValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.needleTypeKey)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.needleTypeValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.needleSizeKey)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.needleSizeValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.wearableSizeKey)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.wearableSizeValue)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PatternDetailId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PatternDetailId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PatternDetailId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
