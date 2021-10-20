@@ -1,15 +1,37 @@
-﻿body {
+﻿body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.bg {
+    /*background-image: url("../wwwroot/images/homepage_background.jpg");*/
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body {
     background-color: #f0f0f0;
 }
 
 h1 {
     font-size: 44pt;
+    color: #3FB0AC;
+}
+
+h2 {
+    color: #3FB0AC;
 }
 
 home {
-    margin-top: .5em;
+    /*margin-top: .5em;*/
 }
 
 .imgproj {
     margin-right: 15px;
+}
+
+nav-item {
+    color: #4E3883;
 }
