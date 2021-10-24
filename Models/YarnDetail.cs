@@ -14,11 +14,19 @@ namespace KnitHub.Models
         public int YarnId { get; set; }
         public Yarn Yarn { get; set; }
 
+        [Display(Name = "Color")]
         public string YarnColor { get; set; }
+
+        [Display(Name = "Color Code")]
         public string YarnColorCode { get; set; }
+
+        [Display(Name = "Dye Lot")]
         public string YarnColorLot { get; set; }
+
+        [Display(Name = "Number of Skeins")]
         public double QuantityOfSkeins { get; set; }
 
+        [Display(Name = "Updated")]
         public DateTime DateUpdated { get; set; } = DateTime.Now;
 
         public double? CalcTotalYardage()

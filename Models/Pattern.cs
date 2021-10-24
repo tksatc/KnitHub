@@ -15,6 +15,8 @@ namespace KnitHub.Models
         public string Name { get; set; }
 
         public int ManufacturerId { get; set; }
+
+        [Display(Name = "Publisher")]
         public Manufacturer Manufacturer { get; set; }
 
         public int DesignerId { get; set; }
@@ -24,9 +26,14 @@ namespace KnitHub.Models
         public Category Category { get; set; }
 
         public int SkillLevelId { get; set; }
+
+        [Display(Name = "Skill Level")]
         public SkillLevel SkillLevel { get; set; }
 
+        [Display(Name = "Storage Location")]
         public string StorageLocation { get; set; }
+
+        [Display(Name = "Updated")]
         public DateTime DateUpdated { get; set; } = DateTime.Now;
 
         public ICollection<PatternDetail> PatternDetails { get; set; }
