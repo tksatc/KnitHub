@@ -8,6 +8,7 @@ namespace KnitHub.Models
 {
     public class Pattern
     {
+        [Key]
         public int PatternId { get; set; }
 
         [Required(ErrorMessage = "Please enter a name for the pattern.")]
@@ -31,6 +32,7 @@ namespace KnitHub.Models
         public SkillLevel SkillLevel { get; set; }
 
         [Display(Name = "Storage Location")]
+        [StringLength(50, ErrorMessage = "A storage location cannot exceed 50 characters.")]
         public string StorageLocation { get; set; }
 
         [Display(Name = "Updated")]

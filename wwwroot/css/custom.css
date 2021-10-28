@@ -3,33 +3,26 @@
     margin: 0;
 }
 
-.home {
-    /*background-image: url("../wwwroot/images/homepage_background.jpg");*/
-    height: 100%;
-    position: relative;
-    background-repeat: no-repeat;
-    background-size: cover;
-    text-align: center;
-    color: #4E3883;
-    font-size: 60px;
-}
+
+/* Insert .home here */
+
 
 /* how to make responsive? */
 .home .home_text {
     position: absolute;
-    top: 150px;
-    right: 100px;
+    text-align: center;
+    color: #4E3883;
+    font-size: 60px;
+    top: 250px;
+    right: 500px;
 }
 
-.home img {
-    width: 100%;
-    height: auto;
-}
+/* Insert .home img here */
 
 .home .btn_get_started {
     position: absolute;
-    top: 575px;
-    right: 140px;
+    top: 675px;
+    right: 700px;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     background-color: #EE7879;

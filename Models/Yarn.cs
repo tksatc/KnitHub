@@ -8,6 +8,7 @@ namespace KnitHub.Models
 {
     public class Yarn
     {
+        [Key]
         public int YarnId { get; set; }
         [Required(ErrorMessage = "Please enter the manufacturer")]
 
@@ -32,6 +33,7 @@ namespace KnitHub.Models
         public FiberWeight FiberWeight { get; set; }
 
         [Display(Name = "Yards in Skein")]
+        [Range(1, 3000, ErrorMessage = "A skein, hank, ball, or cone of yarn cannot exceed 3000 yards in length.")]
         public int SkeinYardage { get; set; }
 
         [Display(Name = "Skein Weight")]

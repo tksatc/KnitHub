@@ -8,7 +8,9 @@ namespace KnitHub.Models
 {
     public class Manufacturer
     {
+        [Key]
         public int ManufacturerId { get; set; }
+        
         [Required(ErrorMessage = "Please enter the manufacturer's name")]
         [StringLength(30, ErrorMessage = "The manufacturer's name cannot exceed 30 characters.")]
         public String Name { get; set; }

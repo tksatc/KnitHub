@@ -8,6 +8,7 @@ namespace KnitHub.Models
 {
     public class PatternDetail
     {
+        [Key]
         public int PatternDetailId { get; set; }
 
         public int PatternId { get; set; }
