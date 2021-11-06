@@ -24,15 +24,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.FiberWeight)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SkeinYardage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SkeinWeight)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateUpdated)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -52,17 +43,8 @@
                 @Html.DisplayFor(modelItem => item.FiberWeight.FiberWeightId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SkeinYardage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SkeinWeight)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateUpdated)
-            </td>
-            <td>
                 <a asp-action="Edit" asp-route-id="@item.YarnId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.YarnId">Details</a> |
+                <a asp-action="Details" asp-route-id="@item.YarnId">View Collections</a> |
                 <a asp-action="Delete" asp-route-id="@item.YarnId">Delete</a>
             </td>
         </tr>

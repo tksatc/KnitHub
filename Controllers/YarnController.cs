@@ -25,6 +25,7 @@ namespace KnitHub.Controllers
             return View(await knitHubContext.ToListAsync());
         }
 
+        /*
         // GET: Yarn/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -44,6 +45,30 @@ namespace KnitHub.Controllers
             }
 
             return View(yarn);
+        }
+        */
+
+        // GET: Yarn/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var yarn = await _context.Yarn
+                .Include(y => y.Manufacturer)
+                .FirstOrDefaultAsync(m => m.YarnId == id);
+            if (yarn == null)
+            {
+                return NotFound();
+            }
+
+            TempData["id"] = yarn.YarnId;
+            TempData["producer"] = yarn.Manufacturer.Name;
+            TempData["name"] = yarn.Name;
+
+            return RedirectToAction("Index", "YarnDetail");
         }
 
         // GET: Yarn/Create

@@ -22,6 +22,10 @@ namespace KnitHub.Controllers
         public async Task<IActionResult> Index()
         {
             var knitHubContext = _context.YarnDetails.Include(y => y.Yarn);
+
+            ViewBag.Producer = TempData["producer"].ToString();
+            ViewBag.Name = TempData["name"].ToString();
+
             return View(await knitHubContext.ToListAsync());
         }
 
