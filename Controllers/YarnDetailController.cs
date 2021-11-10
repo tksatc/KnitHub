@@ -23,6 +23,7 @@ namespace KnitHub.Controllers
         {
             var knitHubContext = _context.YarnDetails.Include(y => y.Yarn);
 
+            ViewBag.ID = TempData["id"].ToString();
             ViewBag.Producer = TempData["producer"].ToString();
             ViewBag.Name = TempData["name"].ToString();
 

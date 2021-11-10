@@ -28,23 +28,28 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.YarnColor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.YarnColorCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.YarnColorLot)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.YarnDetailId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.YarnDetailId">View Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.YarnDetailId">Delete</a>
-            </td>
-        </tr>
-}
+
+        @{
+            var t = Model.FirstOrDefault(x => x.YarnId == Convert.ToInt32(ViewBag.ID));
+
+            if (t == null)
+                return;
+        }
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => t.YarnColor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => t.YarnColorCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => t.YarnColorLot)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@t.YarnDetailId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@t.YarnDetailId">View Details</a> |
+                    <a asp-action="Delete" asp-route-id="@t.YarnDetailId">Delete</a>
+                </td>
+            </tr>
     </tbody>
 </table>
