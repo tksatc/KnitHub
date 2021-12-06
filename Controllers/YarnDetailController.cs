@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KnitHub.Models;
+using KnitHub.ViewModels;
 
 namespace KnitHub.Controllers
 {
@@ -30,25 +31,47 @@ namespace KnitHub.Controllers
             return View(await knitHubContext.ToListAsync());
         }
 
-        // GET: YarnDetail/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public static YarnDetail GetYeOldeYarnDetails(KnitHubContext context, int? yarnDetailsID)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            var yarnDetailObject = context.YarnDetails.FirstOrDefault(x => x.YarnDetailId == yarnDetailsID);
 
-            var yarnDetail = await _context.YarnDetails
-                .Include(y => y.Yarn)
-                .FirstOrDefaultAsync(m => m.YarnDetailId == id);
-            if (yarnDetail == null)
+            yarnDetailObject.Yarn = context.Yarn.FirstOrDefault(x => x.YarnId == yarnDetailObject.YarnId);
+
+            yarnDetailObject.Yarn.Manufacturer =
+                context.Manufacturers.FirstOrDefault(x => x.ManufacturerId == context.Yarn.FirstOrDefault(d => d.YarnId == yarnDetailObject.Yarn.YarnId).ManufacturerId);
+
+            yarnDetailObject.Yarn.FiberType =
+                context.FiberTypess.FirstOrDefault(x => x.FiberTypeId == context.Yarn.FirstOrDefault(d => d.YarnId == yarnDetailObject.Yarn.YarnId).FiberTypeId);
+
+            yarnDetailObject.Yarn.FiberWeight =
+                context.FiberWeights.FirstOrDefault(x => x.FiberWeightId == context.Yarn.FirstOrDefault(d => d.YarnId == yarnDetailObject.Yarn.YarnId).FiberWeightId);
+
+            return yarnDetailObject;
+        }
+
+        // 11-27-21 Display ViewModel Props
+        // GET: YarnDetail/Details/5
+        public ViewResult Details(int? ID)
+        {
+            var collectionID = ID;
+
+            YarnDetail yarnDetail = GetYeOldeYarnDetails(_context, ID);
+
+            YarnCollectionViewModel yarnCollectionViewModel = new YarnCollectionViewModel
             {
-                return NotFound();
+                Yarn = yarnDetail.Yarn,
+                YarnDetail = yarnDetail
+            };
+
+            if (collectionID == yarnDetail.YarnDetailId)
+            {
+
+                ViewBag.collectionID = collectionID;
             }
 
             ViewBag.totalYardage = yarnDetail.CalcTotalYardage();
 
-            return View(yarnDetail);
+            return View(yarnCollectionViewModel);
         }
 
         // GET: YarnDetail/Create

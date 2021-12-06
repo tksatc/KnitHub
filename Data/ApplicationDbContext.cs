@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using KnitHub.Models;
 
 namespace KnitHub.Data
 {
@@ -12,5 +13,6 @@ namespace KnitHub.Data
             : base(options)
         {
         }
+        public DbSet<KnitHub.Models.Manufacturer> Manufacturer { get; set; }
     }
 }

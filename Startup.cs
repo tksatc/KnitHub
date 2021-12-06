@@ -33,6 +33,12 @@ namespace KnitHub
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddMemoryCache();
+            services.AddSession();
+
+            //services.AddControllerWithViews().AddNewtonsoftJson();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
 
@@ -61,6 +67,8 @@ namespace KnitHub
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseSession();
 
             app.UseAuthentication();
             app.UseAuthorization();

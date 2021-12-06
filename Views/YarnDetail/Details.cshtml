@@ -1,61 +1,94 @@
-﻿@model KnitHub.Models.YarnDetail
+﻿@model YarnCollectionViewModel
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Stash Details</h1>
+<h1>Collection Details</h1>
 
 <div>
     <hr />
+
     <dl class="row">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Yarn)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Yarn.Name)
+            @Html.DisplayFor(model => @Model.Yarn.Name)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.YarnColor)
+            @Html.DisplayNameFor(model => model.Yarn.Manufacturer)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.YarnColor)
+            @Html.DisplayFor(model => @Model.Yarn.Manufacturer.Name)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.YarnColorCode)
+            @Html.DisplayNameFor(model => model.Yarn.FiberType)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.YarnColorCode)
+            @Html.DisplayFor(model => @Model.Yarn.FiberType.Name)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.YarnColorLot)
+            @Html.DisplayNameFor(model => model.Yarn.FiberWeight)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.YarnColorLot)
+            @Html.DisplayFor(model => @Model.Yarn.FiberWeight.Name)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.QuantityOfSkeins)
+            @Html.DisplayNameFor(model => model.Yarn.SkeinYardage)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.QuantityOfSkeins)
+            @Html.DisplayFor(model => @Model.Yarn.SkeinYardage)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Yarn.SkeinWeight)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => @Model.Yarn.SkeinWeight)
+        </dd>
+
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.YarnDetail.YarnColor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => @Model.YarnDetail.YarnColor)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => @Model.YarnDetail.YarnColorCode)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => @Model.YarnDetail.YarnColorCode)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.YarnDetail.YarnColorLot)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => @Model.YarnDetail.YarnColorLot)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.YarnDetail.QuantityOfSkeins)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => @Model.YarnDetail.QuantityOfSkeins)
         </dd>
 
         <dt class="col-sm-2">
-            @Html.DisplayName("Total Yarn Yardage")
+            @Html.DisplayName("Total Yardage")
         </dt>
         <dd class="col-sm-10">
             @ViewBag.totalYardage
         </dd>
 
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DateUpdated)
+            @Html.DisplayNameFor(model => model.YarnDetail.DateUpdated)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DateUpdated)
+            @Html.DisplayFor(model => @Model.YarnDetail.DateUpdated)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.YarnDetailId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.YarnDetail.YarnDetailId">Edit</a> |
+    <a asp-controller="Yarn" asp-action="Details" asp-route-id="@Model.Yarn.YarnId">Return to Collections List</a>
 </div>

@@ -7,7 +7,7 @@
 <h1>Yarn Collections</h1>
 
 <p>
-    <a asp-action="Create">Add a New Collection</a>
+    <a asp-action="Create">Add New Collection</a>
 </p>
 
 <h3>@ViewBag.Producer @ViewBag.Name</h3>
@@ -47,9 +47,12 @@
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@t.YarnDetailId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@t.YarnDetailId">View Details</a> |
+                    <a asp-action="Details" asp-route-id="@t.YarnDetailId">Collection Details</a> |
                     <a asp-action="Delete" asp-route-id="@t.YarnDetailId">Delete</a>
                 </td>
             </tr>
     </tbody>
 </table>
+<div>
+    <a asp-controller="Yarn" asp-action="Index">Return to Yarn List</a>
+</div>
