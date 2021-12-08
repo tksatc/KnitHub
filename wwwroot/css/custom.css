@@ -9,20 +9,20 @@
 
 /* how to make responsive? */
 .home .home_text {
-    position: absolute;
-    text-align: center;
+    position: relative;
+    text-align: right;
     color: #4E3883;
     font-size: 60px;
-    top: 250px;
-    right: 500px;
+    top: 600px;
+    right: 200px;
 }
 
 /* Insert .home img here */
 
 .home .btn_get_started {
-    position: absolute;
-    top: 675px;
-    right: 700px;
+    position: relative;
+    top: 475px;
+    right: 300px;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     background-color: #EE7879;
@@ -49,6 +49,10 @@ h1 {
 
 h2 {
     color: #3FB0AC;
+}
+
+p {
+    font-size: 20px;
 }
 
 .imgproj {
