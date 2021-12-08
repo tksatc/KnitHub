@@ -25,6 +25,35 @@ namespace KnitHub.Controllers
             return View(await knitHubContext.ToListAsync());
         }
 
+        // 12.8.21 Send record to PatternDetail/Index
+        // GET: Pattern/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var pattern = await _context.Patterns
+                //.Include(p => p.Name)
+                .Include(p => p.Category)
+                .Include(p => p.Designer)
+                .Include(p => p.Manufacturer)
+                .Include(p => p.SkillLevel)
+                //.Include(p => p.StorageLocation)
+                .FirstOrDefaultAsync(m => m.PatternId == id);
+            if (pattern == null)
+            {
+                return NotFound();
+            }
+
+            TempData["id"] = pattern.PatternId;
+            TempData["name"] = pattern.Name;
+
+            return RedirectToAction("Index", "PatternDetail");
+        }
+
+        /*
         // GET: Pattern/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -46,6 +75,7 @@ namespace KnitHub.Controllers
 
             return View(pattern);
         }
+        */
 
         // GET: Pattern/Create
         public IActionResult Create()

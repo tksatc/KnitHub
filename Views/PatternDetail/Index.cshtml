@@ -1,4 +1,4 @@
-﻿@model IEnumerable<KnitHub.Models.PatternDetail>
+﻿@model IEnumerable<KnitHub.Models.PatternDetail> 
 
 @{
     ViewData["Title"] = "Pattern Details";
@@ -16,25 +16,13 @@
                 @Html.DisplayNameFor(model => model.Pattern)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.yarnWeightKey)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.yarnWeightValue)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.needleTypeKey)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.needleTypeValue)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.needleSizeKey)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.needleSizeValue)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.wearableSizeKey)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.wearableSizeValue)
@@ -49,25 +37,13 @@
                 @Html.DisplayFor(modelItem => item.Pattern.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.yarnWeightKey)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.yarnWeightValue)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.needleTypeKey)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.needleTypeValue)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.needleSizeKey)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.needleSizeValue)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.wearableSizeKey)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.wearableSizeValue)

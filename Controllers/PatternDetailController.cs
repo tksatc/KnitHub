@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KnitHub.Models;
+using KnitHub.ViewModels;
 
 namespace KnitHub.Controllers
 {
@@ -18,12 +19,27 @@ namespace KnitHub.Controllers
             _context = context;
         }
 
+
+        // 12.8.21 Retrieving Data from PatternController
+        // GET: PatternDetail
+        public async Task<IActionResult> Index()
+        {
+            var knitHubContext = _context.PatternDetails.Include(p => p.Pattern);
+
+            ViewBag.ID = TempData["id"].ToString();
+            ViewBag.Name = TempData["name"].ToString();
+
+            return View(await knitHubContext.ToListAsync());
+        }
+
+        /*
         // GET: PatternDetail
         public async Task<IActionResult> Index()
         {
             var knitHubContext = _context.PatternDetails.Include(p => p.Pattern);
             return View(await knitHubContext.ToListAsync());
         }
+        */
 
         // GET: PatternDetail/Details/5
         public async Task<IActionResult> Details(int? id)
