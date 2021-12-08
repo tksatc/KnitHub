@@ -19,6 +19,23 @@ namespace KnitHub.Controllers
             _context = context;
         }
 
+        // 12.8.21 Add conditional to check ViewBag for 2nd pass thru Index
+        // GET: YarnDetail
+        public async Task<IActionResult> Index()
+        {
+            var knitHubContext = _context.YarnDetails.Include(y => y.Yarn);
+
+            if (ViewBag.ID == null)
+            {
+                ViewBag.ID = TempData["id"].ToString();
+                ViewBag.Producer = TempData["producer"].ToString();
+                ViewBag.Name = TempData["name"].ToString();
+            }
+
+            return View(await knitHubContext.ToListAsync());
+        }
+
+        /*
         // GET: YarnDetail
         public async Task<IActionResult> Index()
         {
@@ -30,6 +47,7 @@ namespace KnitHub.Controllers
 
             return View(await knitHubContext.ToListAsync());
         }
+        */
 
         public static YarnDetail GetYeOldeYarnDetails(KnitHubContext context, int? yarnDetailsID)
         {
@@ -81,6 +99,35 @@ namespace KnitHub.Controllers
             return View();
         }
 
+        // 12.8.21 Grab data for ViewBag to populate Index
+        // POST: YarnDetail/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("YarnDetailId,YarnId,YarnColor,YarnColorCode,YarnColorLot,QuantityOfSkeins,DateUpdated")] YarnDetail yarnDetail)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(yarnDetail);
+                await _context.SaveChangesAsync();
+
+                ViewBag.ID = yarnDetail.YarnId;
+                ViewBag.Producer = yarnDetail.Yarn.Manufacturer.Name;
+                ViewBag.Name = yarnDetail.Yarn.Name;
+
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["YarnId"] = new SelectList(_context.Yarn, "YarnId", "Name", yarnDetail.YarnId);
+
+            ViewBag.ID = yarnDetail.YarnId;
+            ViewBag.Producer = yarnDetail.Yarn.Manufacturer.Name;
+            ViewBag.Name = yarnDetail.Yarn.Name;
+
+            return View(yarnDetail);
+        }
+
+        /*
         // POST: YarnDetail/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -97,6 +144,7 @@ namespace KnitHub.Controllers
             ViewData["YarnId"] = new SelectList(_context.Yarn, "YarnId", "Name", yarnDetail.YarnId);
             return View(yarnDetail);
         }
+        */
 
         // GET: YarnDetail/Edit/5
         public async Task<IActionResult> Edit(int? id)
