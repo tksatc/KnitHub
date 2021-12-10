@@ -1,4 +1,4 @@
-﻿@model KnitHub.Models.PatternDetail
+﻿@model PatternDetailsViewModel
 
 @{
     ViewData["Title"] = "Details";
@@ -9,63 +9,39 @@
 <div>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Pattern)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Pattern.Name)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.yarnWeightKey)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PatternDetail.yarnWeightValue)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.yarnWeightKey)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PatternDetail.yarnWeightValue)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.yarnWeightValue)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PatternDetail.needleTypeValue)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.yarnWeightValue)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PatternDetail.needleTypeValue)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.needleTypeKey)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PatternDetail.needleSizeValue)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.needleTypeKey)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PatternDetail.needleSizeValue)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.needleTypeValue)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PatternDetail.wearableSizeValue)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.needleTypeValue)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.needleSizeKey)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.needleSizeKey)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.needleSizeValue)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.needleSizeValue)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.wearableSizeKey)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.wearableSizeKey)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.wearableSizeValue)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.wearableSizeValue)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PatternDetail.wearableSizeValue)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.PatternDetailId">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.PatternDetail.PatternDetailId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

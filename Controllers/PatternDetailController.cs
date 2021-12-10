@@ -41,6 +41,55 @@ namespace KnitHub.Controllers
         }
         */
 
+
+        // 12.8.21 - Create a PatternDetail Object for the Pattern VM
+        public static PatternDetail GetPatternDetails(KnitHubContext context, int? patternDetailsID)
+        {
+            var patternDetailObject = context.PatternDetails.FirstOrDefault(x => x.PatternDetailId == patternDetailsID);
+
+            patternDetailObject.Pattern = context.Patterns.FirstOrDefault(x => x.PatternId == patternDetailObject.PatternId);
+
+            patternDetailObject.Pattern.Manufacturer =
+                context.Manufacturers.FirstOrDefault(x => x.ManufacturerId == context.Patterns.FirstOrDefault(d => d.PatternId == patternDetailObject.Pattern.PatternId).ManufacturerId);
+
+            patternDetailObject.Pattern.Category =
+                context.Categories.FirstOrDefault(x => x.CategoryId == context.Patterns.FirstOrDefault(d => d.PatternId == patternDetailObject.Pattern.PatternId).CategoryId);
+            
+            patternDetailObject.Pattern.SkillLevel =
+                context.SkillLevels.FirstOrDefault(x => x.SkillLevelId == context.Patterns.FirstOrDefault(d => d.PatternId == patternDetailObject.Pattern.PatternId).SkillLevelId);
+
+            patternDetailObject.Pattern.Designer =
+                context.Designers.FirstOrDefault(x => x.DesignerId == context.Patterns.FirstOrDefault(d => d.PatternId == patternDetailObject.Pattern.PatternId).DesignerId);
+
+            return patternDetailObject;
+
+        }
+
+        // 12.8.21 - Display ViewModel Properties
+        // GET: PatternDetail/Details/5
+        public ViewResult Details(int? ID)
+        {
+            var specsID = ID;
+
+            PatternDetail patternDetail = GetPatternDetails(_context, ID);
+
+            PatternDetailsViewModel patternDetailsViewModel = new PatternDetailsViewModel
+            {
+                Pattern = patternDetail.Pattern,
+                PatternDetail = patternDetail
+            };
+
+            patternDetailsViewModel.PatternDetail.wearableSizeValue = _context.WearableSizes.FirstOrDefault(x => x.WearableSizeId.ToString() == patternDetailsViewModel.PatternDetail.wearableSizeValue).Name;
+
+            if (specsID == patternDetail.PatternDetailId)
+            {
+                ViewBag.specsID = specsID;
+            }
+
+            return View(patternDetailsViewModel);
+        }
+
+        /*
         // GET: PatternDetail/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -59,6 +108,7 @@ namespace KnitHub.Controllers
 
             return View(patternDetail);
         }
+        */
 
         // GET: PatternDetail/Create
         public IActionResult Create()

@@ -83,7 +83,6 @@ namespace KnitHub.Controllers
 
             if (collectionID == yarnDetail.YarnDetailId)
             {
-
                 ViewBag.collectionID = collectionID;
             }
 
