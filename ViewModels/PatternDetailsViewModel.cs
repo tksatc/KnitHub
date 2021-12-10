@@ -11,4 +11,5 @@ namespace KnitHub.ViewModels
         public Pattern Pattern { get; set; }
         public PatternDetail PatternDetail { get; set; }
     }
+
 }

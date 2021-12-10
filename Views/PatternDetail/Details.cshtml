@@ -4,7 +4,7 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Pattern Specifics</h1>
+<h1>Pattern Options Details</h1>
 
 <div>
     <hr />
@@ -15,6 +15,43 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Pattern.Name)
         </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pattern.Manufacturer)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pattern.Manufacturer.Name)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pattern.Designer)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pattern.Designer.FullName)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pattern.Category)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pattern.Category.Name)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pattern.SkillLevel)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pattern.SkillLevel.Level)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pattern.StorageLocation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pattern.StorageLocation)
+        </dd>
+
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.PatternDetail.yarnWeightValue)
         </dt>
@@ -43,5 +80,5 @@
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.PatternDetail.PatternDetailId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-controller="Pattern" asp-action="Details" asp-route-id="@Model.Pattern.PatternId">Return to Pattern Options List</a>
 </div>

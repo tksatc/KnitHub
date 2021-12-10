@@ -27,13 +27,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.SkillLevel)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StorageLocation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateUpdated)
-            </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -55,14 +48,8 @@
                 @Html.DisplayFor(modelItem => item.SkillLevel.Level)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.StorageLocation)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateUpdated)
-            </td>
-            <td>
                 <a asp-action="Edit" asp-route-id="@item.PatternId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PatternId">Details</a> |
+                <a asp-action="Details" asp-route-id="@item.PatternId">Pattern Options</a> |
                 <a asp-action="Delete" asp-route-id="@item.PatternId">Delete</a>
             </td>
         </tr>

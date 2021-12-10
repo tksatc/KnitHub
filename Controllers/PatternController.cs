@@ -35,12 +35,10 @@ namespace KnitHub.Controllers
             }
 
             var pattern = await _context.Patterns
-                //.Include(p => p.Name)
                 .Include(p => p.Category)
                 .Include(p => p.Designer)
                 .Include(p => p.Manufacturer)
                 .Include(p => p.SkillLevel)
-                //.Include(p => p.StorageLocation)
                 .FirstOrDefaultAsync(m => m.PatternId == id);
             if (pattern == null)
             {

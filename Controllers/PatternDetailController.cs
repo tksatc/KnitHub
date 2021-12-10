@@ -26,8 +26,11 @@ namespace KnitHub.Controllers
         {
             var knitHubContext = _context.PatternDetails.Include(p => p.Pattern);
 
-            ViewBag.ID = TempData["id"].ToString();
-            ViewBag.Name = TempData["name"].ToString();
+            if (ViewBag.ID == null)
+            {
+                ViewBag.ID = TempData["id"].ToString();
+                ViewBag.Name = TempData["name"].ToString();
+            }
 
             return View(await knitHubContext.ToListAsync());
         }
