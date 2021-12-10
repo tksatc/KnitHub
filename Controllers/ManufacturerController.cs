@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KnitHub.Data;
 using KnitHub.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KnitHub.Controllers
 {
+    [Authorize]
     public class ManufacturerController : Controller
     {
         private readonly ApplicationDbContext _context;

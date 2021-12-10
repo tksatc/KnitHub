@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KnitHub.Models;
 using KnitHub.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KnitHub.Controllers
 {
+    [Authorize]
     public class PatternDetailController : Controller
     {
         private readonly KnitHubContext _context;
