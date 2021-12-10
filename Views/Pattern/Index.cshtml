@@ -13,19 +13,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["PatternNameSortParam"]">Pattern Name</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Manufacturer)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["PublisherSortParam"]">Publisher</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Designer)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["DesignerSortParam"]">Designer</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Category)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["CategorySortParam"]">Category</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SkillLevel)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["SkillSortParam"]">Skill Level</a>
             </th>
         </tr>
     </thead>

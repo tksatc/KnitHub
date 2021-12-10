@@ -17,13 +17,69 @@ namespace KnitHub.Controllers
         {
             _context = context;
         }
+        
+        // 12.10.21 - Add Sort Order to Index()
+        // GET: Pattern
+        public async Task<IActionResult> Index(String sortOrder)
+        {
+            ViewData["PatternNameSortParam"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["PublisherSortParam"] = sortOrder == "Manufacturer" ? "manu_desc" : "Manufacturer";
+            ViewData["DesignerSortParam"] = sortOrder == "Designer" ? "designer_desc" : "Designer";
+            ViewData["CategorySortParam"] = sortOrder == "Category" ? "category_desc" : "Category";
+            ViewData["SkillSortParam"] = sortOrder == "SkillLevel" ? "skill_desc" : "SkillLevel";
 
+            //var knitHubContext = _context.Patterns.Include(p => p.Category).Include(p => p.Designer).Include(p => p.Manufacturer).Include(p => p.SkillLevel);
+            //return View(await knitHubContext.ToListAsync());
+
+            var patterns = from p in _context.Patterns.Include(p => p.Manufacturer).Include(p => p.Designer).Include(p => p.Category).Include(p => p.SkillLevel)
+                           select p;
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    patterns = patterns.OrderByDescending(s => s.Name);
+                    break;
+                case "Manufacturer":
+                    patterns = patterns.OrderBy(s => s.Manufacturer);
+                    break;
+                case "manu_desc":
+                    patterns = patterns.OrderByDescending(s => s.Manufacturer);
+                    break;
+                case "Designer":
+                    patterns = patterns.OrderBy(s => s.Designer);
+                    break;
+                case "designer_desc":
+                    patterns = patterns.OrderByDescending(s => s.Designer);
+                    break;
+                case "Category":
+                    patterns = patterns.OrderBy(s => s.Category);
+                    break;
+                case "category_desc":
+                    patterns = patterns.OrderByDescending(s => s.Category);
+                    break;
+                case "SkillLevel":
+                    patterns = patterns.OrderBy(s => s.SkillLevel);
+                    break;
+                case "skill_desc":
+                    patterns = patterns.OrderByDescending(s => s.SkillLevel);
+                    break;
+                default:
+                    patterns = patterns.OrderBy(s => s.Name);
+                    break;
+            }
+            return View(patterns);
+        }
+
+
+
+        /*
         // GET: Pattern
         public async Task<IActionResult> Index()
         {
             var knitHubContext = _context.Patterns.Include(p => p.Category).Include(p => p.Designer).Include(p => p.Manufacturer).Include(p => p.SkillLevel);
             return View(await knitHubContext.ToListAsync());
         }
+        */
 
         // 12.8.21 Send record to PatternDetail/Index
         // GET: Pattern/Details/5

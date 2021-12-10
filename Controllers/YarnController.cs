@@ -18,11 +18,59 @@ namespace KnitHub.Controllers
             _context = context;
         }
 
+        /*
         // GET: Yarn
         public async Task<IActionResult> Index()
         {
             var knitHubContext = _context.Yarn.Include(y => y.FiberType).Include(y => y.FiberWeight).Include(y => y.Manufacturer);
             return View(await knitHubContext.ToListAsync());
+        }
+        */
+
+        // 12.10.21 - Add Sorting
+        // GET: Yarn
+        public async Task<IActionResult> Index(String sortOrder)
+        {
+            ViewData["YarnNameSortParam"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["ProducerSortParam"] = sortOrder == "Manufacturer" ? "manu_desc" : "Manufacturer";
+            ViewData["FiberTypeSortParam"] = sortOrder == "Type" ? "type_desc" : "Type";
+            ViewData["FiberWeightSortParam"] = sortOrder == "Weight" ? "weight_desc" : "Weight";
+
+            //var knitHubContext = _context.Yarn.Include(y => y.FiberType).Include(y => y.FiberWeight).Include(y => y.Manufacturer);
+            //return View(await knitHubContext.ToListAsync());
+
+            var yarn = from y in _context.Yarn.Include(y => y.Manufacturer).Include(y => y.FiberType).Include(y => y.FiberWeight)
+                        select y;
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    yarn = yarn.OrderByDescending(s => s.Name);
+                    break;
+                case "Manufacturer":
+                    yarn = yarn.OrderBy(s => s.Manufacturer);
+                    break;
+                case "manu_desc":
+                    yarn = yarn.OrderByDescending(s => s.Manufacturer);
+                    break;
+                case "type_desc":
+                    yarn = yarn.OrderByDescending(s => s.FiberType);
+                    break;
+                case "Type":
+                    yarn = yarn.OrderBy(s => s.FiberType);
+                    break;
+                case "Weight":
+                    yarn = yarn.OrderBy(s => s.FiberWeight);
+                    break;
+                case "weight_desc":
+                    yarn = yarn.OrderByDescending(s => s.FiberWeight);
+                    break;
+                default:
+                    yarn = yarn.OrderBy(s => s.Name);
+                    break;
+
+            }
+            return View(yarn);
         }
 
         /*

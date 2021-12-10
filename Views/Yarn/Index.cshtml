@@ -13,16 +13,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Manufacturer)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["ProducerSortParam"]">Producer</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["YarnNameSortParam"]">Yarn Name</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FiberType)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["FiberTypeSortParam"]">Yarn Type</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FiberWeight)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["FiberWeightSortParam"]">Yarn Weight</a>
             </th>
             <th></th>
         </tr>
