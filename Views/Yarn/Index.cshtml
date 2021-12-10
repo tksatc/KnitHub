@@ -1,4 +1,4 @@
-﻿@model IEnumerable<KnitHub.Models.Yarn>
+﻿@model PaginatedList<KnitHub.Models.Yarn>
 
 @{
     ViewData["Title"] = "Yarn";
@@ -9,20 +9,29 @@
 <p>
     <a asp-action="Create">Add a Yarn</a>
 </p>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p style="font-size: 14px">
+            Find by yarn name: <input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default" />
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
 <table class="table table-striped table-bordered table-hover">
     <thead>
         <tr>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["ProducerSortParam"]">Producer</a>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["ProducerSortParam"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Producer</a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["YarnNameSortParam"]">Yarn Name</a>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["YarnNameSortParam"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Yarn Name</a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["FiberTypeSortParam"]">Yarn Type</a>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["FiberTypeSortParam"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Yarn Type</a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["FiberWeightSortParam"]">Yarn Weight</a>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["FiberWeightSortParam"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Yarn Weight</a>
             </th>
             <th></th>
         </tr>
@@ -51,3 +60,22 @@
 }
     </tbody>
 </table>
+@{ 
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>

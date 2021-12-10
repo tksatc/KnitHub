@@ -29,18 +29,36 @@ namespace KnitHub.Controllers
 
         // 12.10.21 - Add Sorting
         // GET: Yarn
-        public async Task<IActionResult> Index(String sortOrder)
+        public async Task<IActionResult> Index(String sortOrder, string currentFilter, string searchString, int? pageNumber)
         {
+            ViewData["CurrentSort"] = sortOrder;
             ViewData["YarnNameSortParam"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["ProducerSortParam"] = sortOrder == "Manufacturer" ? "manu_desc" : "Manufacturer";
             ViewData["FiberTypeSortParam"] = sortOrder == "Type" ? "type_desc" : "Type";
             ViewData["FiberWeightSortParam"] = sortOrder == "Weight" ? "weight_desc" : "Weight";
 
+
             //var knitHubContext = _context.Yarn.Include(y => y.FiberType).Include(y => y.FiberWeight).Include(y => y.Manufacturer);
             //return View(await knitHubContext.ToListAsync());
 
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+
             var yarn = from y in _context.Yarn.Include(y => y.Manufacturer).Include(y => y.FiberType).Include(y => y.FiberWeight)
                         select y;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                yarn = yarn.Where(s => s.Name.Contains(searchString));
+            }
 
             switch (sortOrder)
             {
@@ -70,7 +88,9 @@ namespace KnitHub.Controllers
                     break;
 
             }
-            return View(yarn);
+            int pageSize = 3;
+
+            return View(await PaginatedList<Yarn>.CreateAsync(yarn.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
         /*

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<KnitHub.Models.Pattern>
+﻿@model PaginatedList<KnitHub.Models.Pattern>
 
 @{
     ViewData["Title"] = "Patterns";
@@ -9,50 +9,79 @@
 <p>
     <a asp-action="Create">Add a Pattern</a>
 </p>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p style="font-size: 14px">
+            Find by Designer name: <input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default" />
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
 <table class="table">
     <thead>
         <tr>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["PatternNameSortParam"]">Pattern Name</a>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["PatternNameSortParam"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Pattern Name</a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["PublisherSortParam"]">Publisher</a>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["PublisherSortParam"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Publisher</a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["DesignerSortParam"]">Designer</a>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["DesignerSortParam"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Designer</a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["CategorySortParam"]">Category</a>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["CategorySortParam"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Category</a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["SkillSortParam"]">Skill Level</a>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["SkillSortParam"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Skill Level</a>
             </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Manufacturer.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Designer.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SkillLevel.Level)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.PatternId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PatternId">Pattern Variations</a> |
-                <a asp-action="Delete" asp-route-id="@item.PatternId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Manufacturer.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Designer.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SkillLevel.Level)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.PatternId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.PatternId">Pattern Variations</a> |
+                    <a asp-action="Delete" asp-route-id="@item.PatternId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>

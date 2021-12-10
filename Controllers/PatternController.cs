@@ -20,8 +20,9 @@ namespace KnitHub.Controllers
         
         // 12.10.21 - Add Sort Order to Index()
         // GET: Pattern
-        public async Task<IActionResult> Index(String sortOrder)
+        public async Task<IActionResult> Index(String sortOrder, string currentFilter, string searchString, int? pageNumber)
         {
+            ViewData["CurrentSort"] = sortOrder;
             ViewData["PatternNameSortParam"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["PublisherSortParam"] = sortOrder == "Manufacturer" ? "manu_desc" : "Manufacturer";
             ViewData["DesignerSortParam"] = sortOrder == "Designer" ? "designer_desc" : "Designer";
@@ -31,8 +32,15 @@ namespace KnitHub.Controllers
             //var knitHubContext = _context.Patterns.Include(p => p.Category).Include(p => p.Designer).Include(p => p.Manufacturer).Include(p => p.SkillLevel);
             //return View(await knitHubContext.ToListAsync());
 
+            ViewData["CurrentFilter"] = searchString;
+
             var patterns = from p in _context.Patterns.Include(p => p.Manufacturer).Include(p => p.Designer).Include(p => p.Category).Include(p => p.SkillLevel)
                            select p;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                patterns = patterns.Where(p => p.Designer.FullName.Contains(searchString));
+            }
 
             switch (sortOrder)
             {
@@ -67,7 +75,8 @@ namespace KnitHub.Controllers
                     patterns = patterns.OrderBy(s => s.Name);
                     break;
             }
-            return View(patterns);
+            int pageSize = 3;
+            return View(await PaginatedList<Pattern>.CreateAsync(patterns.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
 
