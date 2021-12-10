@@ -5,10 +5,32 @@
 }
 
 <h1>Add a Pattern</h1>
-
 <hr />
+
+<div class="col-md-6" style="float: right; width: 90%">
+    <p style="font-size: 20px">
+        Adding a new pattern involves a few steps, primarily because a single pattern can have variations in yarns weights
+        and clothing sizes.  To ensure that your individual patterns are configured accurately, please follow
+        these steps to add pattern:<br />
+
+        <ul>
+            <li>
+                Check the Publishers drop-down menu to see if the publisher of your new pattern is in the list.  If so, select the Publisher.
+                If not, follow this link to add a new Publisher.
+            </li>
+            <li>
+                Enter the Yarn Weight specified by the pattern, then click the Save button.  You will be returned to the updated list of patterns.
+            </li>
+            <li>
+                Click the Pattern Variations link to the left of the yarn you just added.  Follow the directions on that page to
+                finish adding the details for your new Pattern Variation.
+            </li>
+        </ul>
+    </p>
+</div>
+
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6" style="float: left; width: 75%">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -39,11 +61,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="DateUpdated" class="control-label"></label>
-                <input asp-for="DateUpdated" class="form-control" readonly="@(true)" />
+                <input asp-for="DateUpdated" class="form-control" />
                 <span asp-validation-for="DateUpdated" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>

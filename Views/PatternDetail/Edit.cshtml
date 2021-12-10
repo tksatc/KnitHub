@@ -4,7 +4,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit an existing variation</h1>
+<h1>Edit an Existing Variation</h1>
 
 <hr />
 <div class="row">
@@ -13,14 +13,9 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="PatternDetailId" />
             <div class="form-group">
-                <label asp-for="PatternId" class="control-label"></label>
+                <label asp-for="PatternId" class="control-label">Pattern</label>
                 <select asp-for="PatternId" class="form-control" asp-items="ViewBag.PatternId"></select>
                 <span asp-validation-for="PatternId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="yarnWeightKey" class="control-label"></label>
-                <input asp-for="yarnWeightKey" class="form-control" />
-                <span asp-validation-for="yarnWeightKey" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="yarnWeightValue" class="control-label"></label>
@@ -28,30 +23,16 @@
                 <span asp-validation-for="yarnWeightValue" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="needleTypeKey" class="control-label"></label>
-                <input asp-for="needleTypeKey" class="form-control" />
-                <span asp-validation-for="needleTypeKey" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="needleTypeValue" class="control-label"></label>
                 <input asp-for="needleTypeValue" class="form-control" />
                 <span asp-validation-for="needleTypeValue" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="needleSizeKey" class="control-label"></label>
-                <input asp-for="needleSizeKey" class="form-control" />
-                <span asp-validation-for="needleSizeKey" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="needleSizeValue" class="control-label"></label>
                 <input asp-for="needleSizeValue" class="form-control" />
                 <span asp-validation-for="needleSizeValue" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="wearableSizeKey" class="control-label"></label>
-                <input asp-for="wearableSizeKey" class="form-control" />
-                <span asp-validation-for="wearableSizeKey" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <label asp-for="wearableSizeValue" class="control-label"></label>
                 <input asp-for="wearableSizeValue" class="form-control" />

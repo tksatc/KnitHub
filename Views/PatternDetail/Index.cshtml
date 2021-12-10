@@ -4,10 +4,10 @@
     ViewData["Title"] = "Pattern Details";
 }
 
-<h1>Pattern Options</h1>
+<h1>Pattern Variations</h1>
 
 <p>
-    <a asp-action="Create">Add New Option</a>
+    <a asp-action="Create">Add New Variation</a>
 </p><br /><br />
 
 <h4>@ViewBag.Name</h4>
@@ -51,7 +51,7 @@
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@t.PatternDetailId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@t.PatternDetailId">Option Details</a> |
+                    <a asp-action="Details" asp-route-id="@t.PatternDetailId">Variation Details</a> |
                     <a asp-action="Delete" asp-route-id="@t.PatternDetailId">Delete</a>
                 </td>
             </tr>
