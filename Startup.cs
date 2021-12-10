@@ -42,6 +42,17 @@ namespace KnitHub
             services.AddControllersWithViews();
             services.AddRazorPages();
 
+            services.Configure<IdentityOptions>(options =>
+           {
+                // Default Password settings
+                options.Password.RequireDigit = true;
+               options.Password.RequireLowercase = true;
+               options.Password.RequireNonAlphanumeric = true;
+               options.Password.RequireUppercase = true;
+               options.Password.RequiredLength = 6;
+               options.Password.RequiredUniqueChars = 1;
+           });
+
             services.AddDbContext<KnitHubContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddRouting(options =>
             {
