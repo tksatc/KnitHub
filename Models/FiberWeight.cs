@@ -18,6 +18,7 @@ namespace KnitHub.Models
 
         [StringLength(30, ErrorMessage = "The weight descriptor cannot exceed 30 characters.")]
         [Column("Description")]
+        [Display(Name = "Yarn Weight")]
         public String Name { get; set; }
 
         public ICollection<Yarn> Yarns { get; set; }

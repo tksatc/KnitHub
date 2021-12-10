@@ -14,6 +14,7 @@ namespace KnitHub.Models
         [Required(ErrorMessage = "Please enter the type of fiber.")]
         [StringLength(50, ErrorMessage = "A fiber type cannot exceed 50 characters.")]
         [RegularExpression(" ^[a - zA - Z0 - 9_] * $", ErrorMessage = "A fiber type can contain alphanumeric characters only.")]
+        [Display(Name = "Yarn Type")]
         public String Name { get; set; }
 
         public ICollection<Yarn> Yarns { get; set; }
