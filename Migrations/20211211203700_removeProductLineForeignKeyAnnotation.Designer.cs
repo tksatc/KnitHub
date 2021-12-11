@@ -4,14 +4,16 @@ using KnitHub.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KnitHub.Migrations
 {
     [DbContext(typeof(KnitHubContext))]
-    partial class KnitHubContextModelSnapshot : ModelSnapshot
+    [Migration("20211211203700_removeProductLineForeignKeyAnnotation")]
+    partial class removeProductLineForeignKeyAnnotation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

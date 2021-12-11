@@ -4,14 +4,16 @@ using KnitHub.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KnitHub.Migrations
 {
     [DbContext(typeof(KnitHubContext))]
-    partial class KnitHubContextModelSnapshot : ModelSnapshot
+    [Migration("20211211203506_changingProductLineForeignKeyAnnotation")]
+    partial class changingProductLineForeignKeyAnnotation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -436,7 +438,7 @@ namespace KnitHub.Migrations
                         {
                             PatternId = 1,
                             CategoryId = 5,
-                            DateUpdated = new DateTime(2021, 12, 11, 12, 37, 0, 127, DateTimeKind.Local).AddTicks(2660),
+                            DateUpdated = new DateTime(2021, 12, 11, 12, 35, 5, 918, DateTimeKind.Local).AddTicks(5450),
                             DesignerId = 3,
                             ManufacturerId = 9,
                             Name = "Rosemarie",
@@ -447,7 +449,7 @@ namespace KnitHub.Migrations
                         {
                             PatternId = 2,
                             CategoryId = 5,
-                            DateUpdated = new DateTime(2021, 12, 11, 12, 37, 0, 127, DateTimeKind.Local).AddTicks(3874),
+                            DateUpdated = new DateTime(2021, 12, 11, 12, 35, 5, 918, DateTimeKind.Local).AddTicks(6600),
                             DesignerId = 2,
                             ManufacturerId = 8,
                             Name = "Simple Tee",
@@ -458,7 +460,7 @@ namespace KnitHub.Migrations
                         {
                             PatternId = 3,
                             CategoryId = 5,
-                            DateUpdated = new DateTime(2021, 12, 11, 12, 37, 0, 127, DateTimeKind.Local).AddTicks(3917),
+                            DateUpdated = new DateTime(2021, 12, 11, 12, 35, 5, 918, DateTimeKind.Local).AddTicks(6643),
                             DesignerId = 1,
                             ManufacturerId = 7,
                             Name = "Gretel",
@@ -738,7 +740,7 @@ namespace KnitHub.Migrations
                         new
                         {
                             YarnId = 1,
-                            DateUpdated = new DateTime(2021, 12, 11, 12, 37, 0, 126, DateTimeKind.Local).AddTicks(201),
+                            DateUpdated = new DateTime(2021, 12, 11, 12, 35, 5, 917, DateTimeKind.Local).AddTicks(2061),
                             FiberTypeId = 3,
                             FiberWeightId = 3,
                             ManufacturerId = 1,
@@ -749,7 +751,7 @@ namespace KnitHub.Migrations
                         new
                         {
                             YarnId = 2,
-                            DateUpdated = new DateTime(2021, 12, 11, 12, 37, 0, 126, DateTimeKind.Local).AddTicks(7192),
+                            DateUpdated = new DateTime(2021, 12, 11, 12, 35, 5, 918, DateTimeKind.Local).AddTicks(92),
                             FiberTypeId = 4,
                             FiberWeightId = 6,
                             ManufacturerId = 2,
@@ -760,7 +762,7 @@ namespace KnitHub.Migrations
                         new
                         {
                             YarnId = 3,
-                            DateUpdated = new DateTime(2021, 12, 11, 12, 37, 0, 126, DateTimeKind.Local).AddTicks(7254),
+                            DateUpdated = new DateTime(2021, 12, 11, 12, 35, 5, 918, DateTimeKind.Local).AddTicks(157),
                             FiberTypeId = 19,
                             FiberWeightId = 1,
                             ManufacturerId = 3,
@@ -808,7 +810,7 @@ namespace KnitHub.Migrations
                         new
                         {
                             YarnDetailId = 1,
-                            DateUpdated = new DateTime(2021, 12, 11, 12, 37, 0, 126, DateTimeKind.Local).AddTicks(7858),
+                            DateUpdated = new DateTime(2021, 12, 11, 12, 35, 5, 918, DateTimeKind.Local).AddTicks(755),
                             QuantityOfSkeins = 4.0,
                             YarnColor = "Gray",
                             YarnColorCode = "86398",
@@ -818,7 +820,7 @@ namespace KnitHub.Migrations
                         new
                         {
                             YarnDetailId = 2,
-                            DateUpdated = new DateTime(2021, 12, 11, 12, 37, 0, 126, DateTimeKind.Local).AddTicks(8992),
+                            DateUpdated = new DateTime(2021, 12, 11, 12, 35, 5, 918, DateTimeKind.Local).AddTicks(1816),
                             QuantityOfSkeins = 1.0,
                             YarnColor = "Green",
                             YarnColorCode = "00236",
@@ -828,7 +830,7 @@ namespace KnitHub.Migrations
                         new
                         {
                             YarnDetailId = 3,
-                            DateUpdated = new DateTime(2021, 12, 11, 12, 37, 0, 126, DateTimeKind.Local).AddTicks(9030),
+                            DateUpdated = new DateTime(2021, 12, 11, 12, 35, 5, 918, DateTimeKind.Local).AddTicks(1853),
                             QuantityOfSkeins = 7.0,
                             YarnColor = "Silver",
                             YarnColorCode = "2022",
