@@ -11,7 +11,7 @@ namespace KnitHub.Models
         [Key]
         public int ProductLineId { get; set; }
         
-        [Required(ErrorMessage = "Please enter a name of the product line.")]
+        [Required(ErrorMessage = "Please enter a name for the product line.")]
         [StringLength(20, ErrorMessage = "A product line name cannot exceed 20 characters.")]
         [Display(Name = "Product Type")]
         public string Name { get; set; }

@@ -12,10 +12,12 @@ namespace KnitHub.Models
         public int DesignerId { get; set; }
         
         [StringLength(20, ErrorMessage = "The first name cannot exceed 20 characters.")]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
         
         [Required(ErrorMessage = "Please enter a last name for the designer.")]
         [StringLength(20, ErrorMessage = "The last name cannot exceed 20 characters.")]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
         [Display(Name = "Full Name")]
