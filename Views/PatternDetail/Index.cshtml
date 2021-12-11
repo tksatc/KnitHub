@@ -27,6 +27,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.wearableSizeValue)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.patternYardageValue)
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -36,25 +39,28 @@
             if (t == null)
                 return;
         }
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => t.yarnWeightValue)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => t.needleTypeValue)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => t.needleSizeValue)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => t.wearableSizeValue)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@t.PatternDetailId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@t.PatternDetailId">Variation Details</a> |
-                    <a asp-action="Delete" asp-route-id="@t.PatternDetailId">Delete</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => t.yarnWeightValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => t.needleTypeValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => t.needleSizeValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => t.wearableSizeValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => t.patternYardageValue)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@t.PatternDetailId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@t.PatternDetailId">Variation Details</a> |
+                <a asp-action="Delete" asp-route-id="@t.PatternDetailId">Delete</a>
+            </td>
+        </tr>
     </tbody>
 </table>
 <div>

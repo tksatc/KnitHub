@@ -50,8 +50,6 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Pattern.StorageLocation)
         </dd>
-
-
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.PatternDetail.yarnWeightValue)
         </dt>
@@ -76,9 +74,14 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.PatternDetail.wearableSizeValue)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PatternDetail.patternYardageValue)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PatternDetail.patternYardageValue)
+        </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.PatternDetail.PatternDetailId">Edit</a> |
     <a asp-controller="Pattern" asp-action="Details" asp-route-id="@Model.Pattern.PatternId">Return to Pattern Variations List</a>
 </div>

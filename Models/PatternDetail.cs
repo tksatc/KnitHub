@@ -33,5 +33,12 @@ namespace KnitHub.Models
 
         [Display(Name = "Clothing Size")]
         public string wearableSizeValue { get; set; }
+
+        public string patternYardageKey { get; set; }
+
+        //[Required(ErrorMessage = "Please enter the yardage required by the pattern.")]
+        [StringLength(5, ErrorMessage = "A pattern's yardage cannot exceed 5 digits.")]
+        [Display(Name = "Total Yardage Needed")]
+        public string patternYardageValue { get; set; }
     }
 }

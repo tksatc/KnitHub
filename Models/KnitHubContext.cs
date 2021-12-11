@@ -153,13 +153,45 @@ namespace KnitHub.Models
                     PatternDetailId = 1,
                     PatternId = 3,
                     yarnWeightKey = "fiberWeightId",
+                    yarnWeightValue = "2",
+                    needleTypeKey = "needleTypeId",
+                    needleTypeValue = "circular 29",
+                    needleSizeKey = "needleSizeId",
+                    needleSizeValue = "6",
+                    wearableSizeKey = "wearableSizeId",
+                    wearableSizeValue = "5",
+                    patternYardageKey = "patternYardageId",
+                    patternYardageValue = "750"
+                },
+                new PatternDetail
+                {
+                    PatternDetailId = 2,
+                    PatternId = 1,
+                    yarnWeightKey = "fiberWeightId",
+                    yarnWeightValue = "0",
+                    needleTypeKey = "needleTypeId",
+                    needleTypeValue = "circular 32",
+                    needleSizeKey = "needleSizeId",
+                    needleSizeValue = "2",
+                    wearableSizeKey = "wearableSizeId",
+                    wearableSizeValue = "5",
+                    patternYardageKey = "patternYardageId",
+                    patternYardageValue = "1750"
+                },
+                new PatternDetail
+                {
+                    PatternDetailId = 3,
+                    PatternId = 2,
+                    yarnWeightKey = "fiberWeightId",
                     yarnWeightValue = "3",
                     needleTypeKey = "needleTypeId",
-                    needleTypeValue = "5",
+                    needleTypeValue = "any",
                     needleSizeKey = "needleSizeId",
-                    needleSizeValue = "9",
+                    needleSizeValue = "4",
                     wearableSizeKey = "wearableSizeId",
-                    wearableSizeValue = "5"
+                    wearableSizeValue = "5",
+                    patternYardageKey = "patternYardageId",
+                    patternYardageValue = "1295"
                 }
                 );
         }
