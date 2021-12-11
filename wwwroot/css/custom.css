@@ -1,11 +1,19 @@
-﻿body, html {
+﻿.navbar-inverse .navbar-nav > lit > a {
+    color: #4E3883;
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a {
+    color: #235C64;
+}
+
+.navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover {
+    color: #EEBA63F;
+}
+
+body, html {
     height: 100%;
     margin: 0;
 }
-
-
-/* Insert .home here */
-
 
 /* how to make responsive? */
 .home .home_text {
@@ -13,20 +21,20 @@
     text-align: right;
     color: #4E3883;
     font-size: 60px;
-    top: 400px;
-    right: 200px;
+    top: 100px;
+    right: 100px;
 }
 
 /* Insert .home img here */
 
 .home .btn_get_started {
     position: absolute;
-    top: 475px;
-    right: 100px;
+    top: 600px;
+    right: 300px;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     background-color: #EE7879;
-    color: black;
+    color: #4E3883;
     font-size: 20px;
     padding: 12px 24px;
     border: none;

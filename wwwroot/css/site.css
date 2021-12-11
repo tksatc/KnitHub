@@ -7,6 +7,23 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+.navbar-inverse .navbar-nav > lit > a {
+    color: #4E3883;
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a {
+    color: #235C64;
+}
+
+.navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover {
+    color: EEBA63F;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
 /* Provide sufficient contrast against white background */
 a {
   color: #0366d6;
