@@ -8,7 +8,9 @@
 
 <p>
     <a asp-action="Create">Add New Variation</a>
-</p><br /><br />
+</p>
+<br />
+<br />
 
 <h4>@ViewBag.Name</h4>
 
@@ -33,34 +35,41 @@
         </tr>
     </thead>
     <tbody>
-        @{ 
-            var t = Model.FirstOrDefault(x => x.PatternId == Convert.ToInt32(ViewBag.ID));
+        @{
+            var patternDetailRecords = Model.Where(x => x.PatternId == Convert.ToInt32(ViewBag.ID)).ToList();
 
-            if (t == null)
+            if (patternDetailRecords == null)
                 return;
+
+            foreach (var patternDetail in patternDetailRecords)
+            {
+                var wearableSizes = (ICollection<WearableSize>)ViewBag.WearableSizes;
+                var wearableSize = wearableSizes.FirstOrDefault(x => x.WearableSizeId.ToString() == patternDetail.wearableSizeValue);
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => patternDetail.yarnWeightValue)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => patternDetail.needleTypeValue)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => patternDetail.needleSizeValue)
+                    </td>
+                    <td>
+                        @wearableSize?.Name
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => patternDetail.patternYardageValue)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@patternDetail.PatternDetailId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@patternDetail.PatternDetailId">Variation Details</a> |
+                        <a asp-action="Delete" asp-route-id="@patternDetail.PatternDetailId">Delete</a>
+                    </td>
+                </tr>
+            }
         }
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => t.yarnWeightValue)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => t.needleTypeValue)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => t.needleSizeValue)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => t.wearableSizeValue)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => t.patternYardageValue)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@t.PatternDetailId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@t.PatternDetailId">Variation Details</a> |
-                <a asp-action="Delete" asp-route-id="@t.PatternDetailId">Delete</a>
-            </td>
-        </tr>
     </tbody>
 </table>
 <div>

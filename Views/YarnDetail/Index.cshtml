@@ -30,27 +30,31 @@
     <tbody>
 
         @{
-            var t = Model.FirstOrDefault(x => x.YarnId == Convert.ToInt32(ViewBag.ID));
+            var yarns = Model.Where(x => x.YarnId == Convert.ToInt32(ViewBag.ID)).ToList();
 
-            if (t == null)
+            if (yarns == null)
                 return;
+
+            foreach (var yarn in yarns)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => @yarn.YarnColor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => @yarn.YarnColorCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => @yarn.YarnColorLot)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@yarn.YarnDetailId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@yarn.YarnDetailId">Collection Details</a> |
+                        <a asp-action="Delete" asp-route-id="@yarn.YarnDetailId">Delete</a>
+                    </td>
+                </tr>
+            }
         }
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => t.YarnColor)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => t.YarnColorCode)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => t.YarnColorLot)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@t.YarnDetailId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@t.YarnDetailId">Collection Details</a> |
-                    <a asp-action="Delete" asp-route-id="@t.YarnDetailId">Delete</a>
-                </td>
-            </tr>
     </tbody>
 </table>
 <div>

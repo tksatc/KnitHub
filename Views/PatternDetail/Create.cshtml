@@ -27,7 +27,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="PatternId" class="control-label">Pattern Name</label>
-                <select asp-for="PatternId" class ="form-control" asp-items="ViewBag.PatternId"></select>
+                <select asp-for="PatternId" class="form-control" asp-items="ViewBag.PatternId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="yarnWeightValue" class="control-label"></label>
@@ -46,7 +46,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="wearableSizeValue" class="control-label"></label>
-                <input asp-for="wearableSizeValue" class="form-control" />
+                <select asp-for="PatternId" class="form-control" asp-items="@ViewBag.WearableSizes"></select>
                 <span asp-validation-for="wearableSizeValue" class="text-danger"></span>
             </div>
             <div class="form-group">

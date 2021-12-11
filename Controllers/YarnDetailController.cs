@@ -110,12 +110,17 @@ namespace KnitHub.Controllers
         {
             if (ModelState.IsValid)
             {
+                yarnDetail.Yarn = _context.Yarn.FirstOrDefault(x => x.YarnId == yarnDetail.YarnId);
+                yarnDetail.Yarn.Manufacturer = _context.Manufacturers.FirstOrDefault(x => x.ManufacturerId == yarnDetail.Yarn.ManufacturerId);
+                yarnDetail.Yarn.FiberType = _context.FiberTypess.FirstOrDefault(x => x.FiberTypeId == yarnDetail.Yarn.FiberTypeId);
+                yarnDetail.Yarn.FiberWeight = _context.FiberWeights.FirstOrDefault(x => x.FiberWeightId == yarnDetail.Yarn.FiberWeightId);
+
                 _context.Add(yarnDetail);
                 await _context.SaveChangesAsync();
 
-                ViewBag.ID = yarnDetail.YarnId;
-                ViewBag.Producer = yarnDetail.Yarn.Manufacturer.Name;
-                ViewBag.Name = yarnDetail.Yarn.Name;
+                TempData["ID"] = yarnDetail.YarnId;
+                TempData["Producer"] = yarnDetail.Yarn.Manufacturer.Name;
+                TempData["Name"] = yarnDetail.Yarn.Name;
 
                 return RedirectToAction(nameof(Index));
             }

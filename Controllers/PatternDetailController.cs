@@ -28,10 +28,12 @@ namespace KnitHub.Controllers
         {
             var knitHubContext = _context.PatternDetails.Include(p => p.Pattern);
 
-            if (ViewBag.ID == null)
+            if (ViewBag.ID == null && TempData.Keys.Contains("id"))
             {
                 ViewBag.ID = TempData["id"].ToString();
                 ViewBag.Name = TempData["name"].ToString();
+
+                ViewBag.WearableSizes = _context.WearableSizes.ToList();
             }
 
             return View(await knitHubContext.ToListAsync());
@@ -84,7 +86,8 @@ namespace KnitHub.Controllers
                 PatternDetail = patternDetail
             };
 
-            patternDetailsViewModel.PatternDetail.wearableSizeValue = _context.WearableSizes.FirstOrDefault(x => x.WearableSizeId.ToString() == patternDetailsViewModel.PatternDetail.wearableSizeValue).Name;
+            patternDetailsViewModel.PatternDetail.wearableSizeValue = 
+                _context.WearableSizes.FirstOrDefault(x => x.WearableSizeId.ToString() == patternDetailsViewModel.PatternDetail.wearableSizeValue).Name;
 
             if (specsID == patternDetail.PatternDetailId)
             {
@@ -119,6 +122,8 @@ namespace KnitHub.Controllers
         public IActionResult Create()
         {
             ViewData["PatternId"] = new SelectList(_context.Patterns, "PatternId", "Name");
+            ViewBag.WearableSizes = new SelectList(_context.WearableSizes, "WearableSizeId", "Name");
+
             return View();
         }
 
