@@ -5,18 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using KnitHub.Data;
 using KnitHub.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace KnitHub.Controllers
 {
-    [Authorize]
     public class ManufacturerController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly KnitHubContext _context;
 
-        public ManufacturerController(ApplicationDbContext context)
+        public ManufacturerController(KnitHubContext context)
         {
             _context = context;
         }
@@ -24,8 +21,8 @@ namespace KnitHub.Controllers
         // GET: Manufacturer
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Manufacturer.Include(m => m.ProductLine);
-            return View(await applicationDbContext.ToListAsync());
+            var knitHubContext = _context.Manufacturers.Include(m => m.ProductLine);
+            return View(await knitHubContext.ToListAsync());
         }
 
         // GET: Manufacturer/Details/5
@@ -36,7 +33,7 @@ namespace KnitHub.Controllers
                 return NotFound();
             }
 
-            var manufacturer = await _context.Manufacturer
+            var manufacturer = await _context.Manufacturers
                 .Include(m => m.ProductLine)
                 .FirstOrDefaultAsync(m => m.ManufacturerId == id);
             if (manufacturer == null)
@@ -50,7 +47,7 @@ namespace KnitHub.Controllers
         // GET: Manufacturer/Create
         public IActionResult Create()
         {
-            ViewData["ProductLineId"] = new SelectList(_context.Set<ProductLine>(), "ProductLineId", "Name");
+            ViewData["ProductLineId"] = new SelectList(_context.ProductLines, "ProductLineId", "Name");
             return View();
         }
 
@@ -67,7 +64,7 @@ namespace KnitHub.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProductLineId"] = new SelectList(_context.Set<ProductLine>(), "ProductLineId", "Name", manufacturer.ProductLineId);
+            ViewData["ProductLineId"] = new SelectList(_context.ProductLines, "ProductLineId", "Name", manufacturer.ProductLineId);
             return View(manufacturer);
         }
 
@@ -79,12 +76,12 @@ namespace KnitHub.Controllers
                 return NotFound();
             }
 
-            var manufacturer = await _context.Manufacturer.FindAsync(id);
+            var manufacturer = await _context.Manufacturers.FindAsync(id);
             if (manufacturer == null)
             {
                 return NotFound();
             }
-            ViewData["ProductLineId"] = new SelectList(_context.Set<ProductLine>(), "ProductLineId", "Name", manufacturer.ProductLineId);
+            ViewData["ProductLineId"] = new SelectList(_context.ProductLines, "ProductLineId", "Name", manufacturer.ProductLineId);
             return View(manufacturer);
         }
 
@@ -120,7 +117,7 @@ namespace KnitHub.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProductLineId"] = new SelectList(_context.Set<ProductLine>(), "ProductLineId", "Name", manufacturer.ProductLineId);
+            ViewData["ProductLineId"] = new SelectList(_context.ProductLines, "ProductLineId", "Name", manufacturer.ProductLineId);
             return View(manufacturer);
         }
 
@@ -132,7 +129,7 @@ namespace KnitHub.Controllers
                 return NotFound();
             }
 
-            var manufacturer = await _context.Manufacturer
+            var manufacturer = await _context.Manufacturers
                 .Include(m => m.ProductLine)
                 .FirstOrDefaultAsync(m => m.ManufacturerId == id);
             if (manufacturer == null)
@@ -148,15 +145,15 @@ namespace KnitHub.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var manufacturer = await _context.Manufacturer.FindAsync(id);
-            _context.Manufacturer.Remove(manufacturer);
+            var manufacturer = await _context.Manufacturers.FindAsync(id);
+            _context.Manufacturers.Remove(manufacturer);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ManufacturerExists(int id)
         {
-            return _context.Manufacturer.Any(e => e.ManufacturerId == id);
+            return _context.Manufacturers.Any(e => e.ManufacturerId == id);
         }
     }
 }
