@@ -8,18 +8,28 @@
 <hr />
 
 <div class="col-md-6" style="float: right; width: 90%">
-    <p style="font-size: 20px">
+    <p style="font-size: 20px; color: #4E3883">
         Adding a new pattern involves a few steps, primarily because a single pattern can have variations in yarns weights
-        and clothing sizes.  To ensure that your individual patterns are configured accurately, please follow
-        these steps to add pattern:<br />
+        and clothing sizes.  Please note that if you need to add new Publishers or Designers, you will need to do this 
+        before you will be able to add your new pattern.  Follow the links and directions below.
+        
+        To ensure that your individual patterns are configured accurately, please follow these steps to add pattern:<br />
 
-        <ul>
+        <ul style="color: #4E3883">
             <li>
                 Check the Publishers drop-down menu to see if the publisher of your new pattern is in the list.  If so, select the Publisher.
-                If not, follow this link to add a new Publisher.
+                If not, follow this <a asp-controller="Manufacturer" asp-action="Create">link</a> to add a new Publisher.
             </li>
             <li>
-                Enter the Yarn Weight specified by the pattern, then click the Save button.  You will be returned to the updated list of patterns.
+                Check the Designer drop-down menu to see if the pattern's designer is in the list.  If so, select the designer.  If not,
+                follow this <a asp-controller="Designer" asp-action="Create">link</a> to add a new designer.
+            </li>
+            <li>
+                Select the pattern Category and Skill Level from the drop-down menus, then enter a description of the place you keep
+                the pattern in the Storage Location field.
+            </li>
+            <li>
+                Be sure to select the current date, then click the Save button.
             </li>
             <li>
                 Click the Pattern Variations link to the left of the yarn you just added.  Follow the directions on that page to

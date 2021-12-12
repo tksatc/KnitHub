@@ -7,6 +7,28 @@
 
 <h1>Add New Producer/Publisher</h1>
 
+<div class="col-md-6" style="float: right; width: 90%">
+    <p style="font-size: 20px" ; style="color: #4E3883">
+        To add a new Yarn Producer or Pattern Publisher:
+        <ul style="color: #4E3883">
+            <li>
+                Enter the company's name.
+            </li>
+            <li>
+                Select either Yarn or Patterns in the drop-down menu.
+            </li>
+            <li>
+                You may also enter the company's web address, if you like, then click the Save button.
+            </li>
+            <li>
+                You will be redirected to a page that lists all the Producers and Publishers in your Knit Hub.
+                Choose one of the links at the bottom of the page to return to creating a new yarn, or a new
+                pattern.
+            </li>
+        </ul>
+    </p>
+</div>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -19,7 +41,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="ProductLineId" class="control-label">Product Type</label>
-                <select asp-for="ProductLineId" class ="form-control" asp-items="ViewBag.ProductLineId"></select>
+                <select asp-for="ProductLineId" class="form-control" asp-items="ViewBag.ProductLineId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Url" class="control-label"></label>

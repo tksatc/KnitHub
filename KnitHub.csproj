@@ -6,6 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20211212050402_seedData.cs" />
+    <Compile Remove="Migrations\20211212050402_seedData.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="Views\Home\HowItWorkscshtml.cshtml" />
   </ItemGroup>
 
