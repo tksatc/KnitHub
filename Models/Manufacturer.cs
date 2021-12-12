@@ -18,6 +18,7 @@ namespace KnitHub.Models
         public int ProductLineId { get; set; }
         public ProductLine ProductLine { get; set; }
 
+        [Display(Name = "Web Address")]
         public String Url { get; set; }
 
         public ICollection<Yarn> Yarns { get; set; }
