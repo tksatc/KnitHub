@@ -6,8 +6,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20211211200343_removeNeedlesfromPL.cs" />
+    <Compile Remove="Migrations\20211211200343_removeNeedlesfromPL.Designer.cs" />
+    <Compile Remove="Migrations\20211211200600_reversePLRemoval.cs" />
+    <Compile Remove="Migrations\20211211200600_reversePLRemoval.Designer.cs" />
+    <Compile Remove="Migrations\20211211201603_addFKtoManu.cs" />
+    <Compile Remove="Migrations\20211211201603_addFKtoManu.Designer.cs" />
+    <Compile Remove="Migrations\20211211202850_alterCSProj.cs" />
+    <Compile Remove="Migrations\20211211202850_alterCSProj.Designer.cs" />
+    <Compile Remove="Migrations\20211211203506_changingProductLineForeignKeyAnnotation.cs" />
+    <Compile Remove="Migrations\20211211203506_changingProductLineForeignKeyAnnotation.Designer.cs" />
+    <Compile Remove="Migrations\20211211203700_removeProductLineForeignKeyAnnotation.cs" />
+    <Compile Remove="Migrations\20211211203700_removeProductLineForeignKeyAnnotation.Designer.cs" />
     <Compile Remove="Migrations\20211212050402_seedData.cs" />
     <Compile Remove="Migrations\20211212050402_seedData.Designer.cs" />
+    <Compile Remove="Migrations\20211212141746_addSeedData.cs" />
+    <Compile Remove="Migrations\20211212141746_addSeedData.Designer.cs" />
+    <Compile Remove="Migrations\20211212142831_testContextFix.cs" />
+    <Compile Remove="Migrations\20211212142831_testContextFix.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -38,7 +38,7 @@ namespace KnitHub.Models
                 new Manufacturer { ManufacturerId = 3, Name = "Shibui", ProductLineId = 1, Url = "https://shibuiknits.com" },
                 new Manufacturer { ManufacturerId = 4, Name = "Knitter's Pride", ProductLineId= 2, Url = "https://www.knitterspride.com" },
                 new Manufacturer { ManufacturerId = 5, Name = "Cocoknits", ProductLineId = 3, Url = "https://cocoknits.com" },
-                new Manufacturer { ManufacturerId = 6, Name = "Churchmouse Yarns & Tees", ProductLineId = 3, Url = "https://churchmouseyarns.com" },
+                new Manufacturer { ManufacturerId = 6, Name = "Churchmouse Yarns & Teas", ProductLineId = 3, Url = "https://churchmouseyarns.com" },
                 new Manufacturer { ManufacturerId = 7, Name = "Louet", ProductLineId = 1, Url = "https://louet.com" }
                 );
             modelBuilder.Entity<FiberType>().HasData(
@@ -98,9 +98,9 @@ namespace KnitHub.Models
                 new Category { CategoryId = 1, Name = "home decor" },
                 new Category { CategoryId = 2, Name = "home use" },
                 new Category { CategoryId = 3, Name = "infant clothing" },
-                new Category { CategoryId = 4, Name = "children clothing" },
-                new Category { CategoryId = 5, Name = "women clothing" },
-                new Category { CategoryId = 6, Name = "men clothing" },
+                new Category { CategoryId = 4, Name = "childrens clothing" },
+                new Category { CategoryId = 5, Name = "womens clothing" },
+                new Category { CategoryId = 6, Name = "mens clothing" },
                 new Category { CategoryId = 7, Name = "wearable accessories" },
                 new Category { CategoryId = 8, Name = "toys" },
                 new Category { CategoryId = 9, Name = "pets" }
@@ -113,7 +113,8 @@ namespace KnitHub.Models
                 new WearableSize { WearableSizeId = 5, Name = "L" },
                 new WearableSize { WearableSizeId = 6, Name = "XL" },
                 new WearableSize { WearableSizeId = 7, Name = "2X" },
-                new WearableSize { WearableSizeId = 8, Name = "3X" }
+                new WearableSize { WearableSizeId = 8, Name = "3X" },
+                new WearableSize { WearableSizeId = 9, Name = "none"}
                 );
             modelBuilder.Entity<Pattern>().HasData(
                 new Pattern
