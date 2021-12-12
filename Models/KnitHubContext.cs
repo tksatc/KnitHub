@@ -36,7 +36,7 @@ namespace KnitHub.Models
                 new Manufacturer { ManufacturerId = 1, Name = "Nako", ProductLineId = 1, Url = "http://www.nako.com/" },
                 new Manufacturer { ManufacturerId = 2, Name = "Rowan", ProductLineId = 1, Url = "https://knitrowan.com" },
                 new Manufacturer { ManufacturerId = 3, Name = "Shibui", ProductLineId = 1, Url = "https://shibuiknits.com" },
-                new Manufacturer { ManufacturerId = 4, Name = "Knitter's Pride", ProductLineId= 2, Url = "https://www.knitterspride.com" },
+                //new Manufacturer { ManufacturerId = 4, Name = "Knitter's Pride", ProductLineId= 2, Url = "https://www.knitterspride.com" },
                 new Manufacturer { ManufacturerId = 5, Name = "Cocoknits", ProductLineId = 3, Url = "https://cocoknits.com" },
                 new Manufacturer { ManufacturerId = 6, Name = "Churchmouse Yarns & Teas", ProductLineId = 3, Url = "https://churchmouseyarns.com" },
                 new Manufacturer { ManufacturerId = 7, Name = "Louet", ProductLineId = 1, Url = "https://louet.com" }
