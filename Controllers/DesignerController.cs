@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KnitHub.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KnitHub.Controllers
 {
+    [Authorize]
     public class DesignerController : Controller
-    {
+   {
         private readonly KnitHubContext _context;
 
         public DesignerController(KnitHubContext context)
